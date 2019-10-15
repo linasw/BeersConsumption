@@ -74,7 +74,7 @@ namespace BeerConsumption.Controllers
             try
             {
                 var jsonAsString = await _client.GetStringAsync($"beers/{id}");
-                var beer = JsonConvert.DeserializeObject<Beer>(jsonAsString);
+                var beer = JsonConvert.DeserializeObject<BeerEdit>(jsonAsString);
                 return View(beer);
             }
             catch (Exception ex)
@@ -85,7 +85,7 @@ namespace BeerConsumption.Controllers
 
         // POST: Beers/Edit/5
         [HttpPost]
-        public async Task<ActionResult> Edit(string id, BeerCreation beer)
+        public async Task<ActionResult> Edit(string id, BeerEdit beer)
         {
             try
             {
